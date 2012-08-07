@@ -67,6 +67,8 @@ Druthers::Application.configure do
 
   # Devise mail settings
 
+  config.action_mailer.default_url_options = { :host => 'gmail.com' }
+
    Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
 
    ActionMailer::Base.delivery_method = :smtp
