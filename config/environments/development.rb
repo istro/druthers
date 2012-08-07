@@ -1,3 +1,5 @@
+require 'tlsmail'
+
 Druthers::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -37,4 +39,22 @@ Druthers::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Devise mail settings
+
+   Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+
+   ActionMailer::Base.delivery_method = :smtp
+   ActionMailer::Base.perform_deliveries = true
+   ActionMailer::Base.raise_delivery_errors = true
+
+   ActionMailer::Base.smtp_settings = {
+     :enable_starttls_auto => true,
+     :address        => 'smtp.gmail.com',
+     :port           => 587,
+     :authentication => :plain,
+     :user_name      => 'dbcdruthers@gmail.com',
+     :password       => 'ifihadmydruthers'
+   }
+
 end

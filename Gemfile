@@ -8,6 +8,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'tlsmail'
 gem 'heroku'
 
 group :assets do
