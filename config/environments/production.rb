@@ -77,7 +77,7 @@ Druthers::Application.configure do
      :enable_starttls_auto => true,
      :address        => 'smtp.gmail.com',
      :port           => 587,
-     :host           => 'druthers.herokuapp.com'
+     :host           => 'gmail.com',
      :authentication => :plain,
      :user_name      => 'dbcdruthers@gmail.com',
      :password       => 'ifihadmydruthers'
