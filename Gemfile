@@ -8,6 +8,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'heroku'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
