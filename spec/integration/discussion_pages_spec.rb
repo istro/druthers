@@ -1,5 +1,5 @@
 describe 'the page that a user sees upon login' do
-  it 'has a new poll field' do
+  it 'has a new discussion field' do
     FactoryGirl.create :user
     
     visit root_path
@@ -9,7 +9,6 @@ describe 'the page that a user sees upon login' do
     fill_in 'Password', with: 'foobar123!'
     click_button 'Sign in'
 
-    # save_and_open_page
-    page.should have_button 'Create new poll'
+    page.should have_button 'Create new discussion'
   end
 end

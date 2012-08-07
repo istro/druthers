@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Poll do
+describe Discussion do
   it {should belong_to :user}
 end
