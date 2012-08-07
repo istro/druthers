@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  database: druthers-dev
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: druthers-test
+  host: localhost
