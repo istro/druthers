@@ -15,6 +15,7 @@ Spork.prefork do
 
   require 'capybara/rspec'
   require 'factory_girl'
+  require 'ffaker'
   include Capybara::DSL
 
   ENV["RAILS_ENV"] ||= 'test'

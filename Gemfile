@@ -32,4 +32,5 @@ group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda'
+  gem 'ffaker'
 end
