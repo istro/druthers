@@ -1,5 +1,3 @@
 %h1 My discussions
 
-= form_for @discussion do |f|
-	= f.text_field :question, placeholder: 'Ask a question!'
-	= f.submit 'Create new discussion'
+= render "form", :discussion => @discussion
