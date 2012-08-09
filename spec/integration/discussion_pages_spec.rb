@@ -1,6 +1,6 @@
 describe 'the initial user experience' do
   before :all do
-  	@user = FactoryGirl.create(:user)
+  	@user = FactoryGirl.create(:user, password: 'aeiouyy')
   end
 
   before :each do
