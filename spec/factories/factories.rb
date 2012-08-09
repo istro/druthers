@@ -3,8 +3,7 @@ require 'ffaker'
 FactoryGirl.define do
   factory :user do
   	email Faker::Internet.email
-    password "aeiouyy"
-    password_confirmation "aeiouyy"
+    password Faker::Lorem(3).join
   end
 
   factory :discussion do
