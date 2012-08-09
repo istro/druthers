@@ -3,10 +3,12 @@ require 'ffaker'
 FactoryGirl.define do
   factory :user do
   	email Faker::Internet.email
-    password Faker::Lorem(3).join
+    test_password = Faker::Lorem.words.join
+    password test_password
+    password_confirmation test_password
   end
 
   factory :discussion do
-    question "Where do we go for vacation?"
+    question Faker::Lorem.sentence
   end
 end
