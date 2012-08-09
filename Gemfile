@@ -28,6 +28,7 @@ group :development, :test do
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'factory_girl_rails'
+  gem 'launchy'
 end
 
 group :test do

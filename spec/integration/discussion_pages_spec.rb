@@ -1,7 +1,9 @@
 describe 'the initial user experience' do
   before :all do
   	@user = FactoryGirl.create(:user)
-    
+  end
+
+  before :each do
     visit root_path
 		click_link 'Login'
     
@@ -19,7 +21,12 @@ describe 'the initial user experience' do
 
 	context 'the page that a user seeds after submitting a new question' do
 		it 'shows the question that they submitted' do
-			page.should have_button 'Create new discussion'
+			fill_in 'discussion_question', with: "How do you feel about #{Faker::AddressUS.state}?"
+			click_button 'Create new discussion'
+
+			save_and_open_page
+
+			page.should have_content 'How do you feel about'
 		end
 	end
 end

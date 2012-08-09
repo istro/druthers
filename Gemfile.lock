@@ -275,6 +275,7 @@ DEPENDENCIES
   heroku
   jazz_hands
   jquery-rails
+  launchy
   pg
   quiet_assets
   rails (= 3.2.7)
