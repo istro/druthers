@@ -10,6 +10,7 @@ describe 'the initial user experience' do
     click_button 'Sign in'
 	end
 
+
 	context 'the page that a user sees upon login' do
 	  it 'has a new discussion field' do
 	    page.should have_button 'Create new discussion'

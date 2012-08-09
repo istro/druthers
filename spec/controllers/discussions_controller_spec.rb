@@ -15,12 +15,5 @@ describe DiscussionsController do
       assigns(:discussion).should be_new_record
     end
   end
-
-  # describe "#index" do
-  #   it "assigns a variable with all discussions" do
-  #     get(:index)
-  #     assigns(:discussions).should be_new_record 
-  #   end
-  # end
 end
 
