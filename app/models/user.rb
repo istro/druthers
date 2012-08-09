@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   validates :email, :password_confirmation, :presence => true
+
+  has_many :discussions
 end

@@ -7,4 +7,13 @@ class DiscussionsController < ApplicationController
   	@discussion = Discussion.new
   	@discussions = Discussion.all
   end
+
+  def create
+    @discussion = current_user.discussions.create(params[:discussion])
+    redirect_to @discussion
+  end
+
+  def show
+    @discussion = Discussion.find(params[:id])
+  end
 end

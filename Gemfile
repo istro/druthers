@@ -19,7 +19,6 @@ end
 
 group :development do
   gem 'quiet_assets'
-  gem 'jazz_hands'
 end
 
 group :development, :test do
@@ -29,6 +28,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'factory_girl_rails'
   gem 'launchy'
+  gem 'jazz_hands'
 end
 
 group :test do
