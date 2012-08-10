@@ -1,0 +1,4 @@
+= form_for [@discussion, @solution] do |f|
+  = f.label :text
+  = f.text_field :text, placeholder: 'I\'d rather...'
+  = f.submit 'Propose new solution'

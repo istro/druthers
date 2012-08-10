@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   validates :email, :password_confirmation, :presence => true
 
   has_many :discussions
+  has_many :solutions
 end

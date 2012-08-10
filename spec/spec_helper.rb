@@ -1,12 +1,15 @@
 require 'rubygems'
+# require File.expand_path("../../config/environment", __FILE__)
+# require 'rspec/rails'
 require 'spork'
-require 'database_cleaner'
-
+# require 'database_cleaner'
+# require "capybara"
+# require 'capybara/rails'
 
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
-Spork.prefork do
+#Spork.prefork do
 
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
@@ -14,22 +17,26 @@ Spork.prefork do
 
   # This file is copied to spec/ when you run 'rails generate rspec:install'
 
+  ENV["RAILS_ENV"] = 'test'
+  require File.expand_path("../../config/environment", __FILE__)
+  require "capybara"
+  require 'capybara/rails'
+
   require 'capybara/rspec'
   require 'factory_girl'
   require 'ffaker'
   include Capybara::DSL
-
-  ENV["RAILS_ENV"] ||= 'test'
-  require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+  require 'shoulda'
+  # include Devise::TestHelpers
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
-    
+
 
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -37,20 +44,21 @@ Spork.prefork do
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = false
+    config.use_transactional_fixtures = true
     #changed to false from true for DatabaseCleaner
-
-    config.before(:suite) do
-      DatabaseCleaner.strategy = :truncation
-    end
-
     config.before(:each) do
-      DatabaseCleaner.start
     end
+    # config.before(:suite) do
+    #   DatabaseCleaner.strategy = :truncation
+    # end
 
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
+    # config.before(:each) do
+    #   DatabaseCleaner.start
+    # end
+
+    # config.after(:each) do
+    #   DatabaseCleaner.clean
+    # end
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
@@ -62,18 +70,17 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
-  
 
+    # config.include Devise::TestHelpers, :type => :integration
   end
 
-end
+# end
 
-Spork.each_run do
+# Spork.each_run do
 
+#   # This code will be run each time you run your specs.
 
-  # This code will be run each time you run your specs.
-
-end
+# end
 
 # --- Instructions ---
 # Sort the contents of this file into a Spork.prefork and a Spork.each_run
