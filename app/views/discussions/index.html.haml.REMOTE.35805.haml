@@ -1,0 +1,7 @@
+%h1 My discussions
+
+= render "form", :discussion => @discussion
+
+%ul
+  - @discussions.each do |discussion|
+    %li= discussion.question
