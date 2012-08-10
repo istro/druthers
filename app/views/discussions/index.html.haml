@@ -1,3 +1,10 @@
 %h1 My discussions
 
+%h3 Discussions I started
 = render "form", :discussion => @discussion
+
+%h3 Discussions I am participating in
+%ul
+  - @user_discussions.each do |user_discussion|
+    %li= user_discussion.discussion.question
+    

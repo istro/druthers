@@ -5,7 +5,8 @@ class DiscussionsController < ApplicationController
 
   def index
   	@discussion = Discussion.new
-  	@discussions = Discussion.all
+  	@discussions = current_user.discussions
+    @user_discussions = current_user.user_discussions
   end
 
   def create
@@ -16,5 +17,14 @@ class DiscussionsController < ApplicationController
   def show
     @discussion = Discussion.find(params[:id])
     @solution = Solution.new
+    if signed_in?
+      unless current_user.user_discussions.find_by_discussion_id params[:id] || @discussion.user = current_user
+        @user_discussion = @discussion.user_discussions.new
+        @user_discussion.user = current_user
+        @user_discussion.save
+      end
+    else
+      flash[:message] = 'Sign up or log in to participate in this discussion.'
+    end
   end
 end

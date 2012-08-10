@@ -28,4 +28,24 @@ describe 'When a user first logs in,' do
 	end
 end
 
+describe 'When a user first visits the discussion page,' do
+  before :each do
+    @discussion = FactoryGirl.create :discussion
+  end
 
+  context 'if they are not logged in' do
+    it 'tells them they need to sign up or log in to participate' do
+      visit discussion_path @discussion
+      page.should have_content 'Sign up or log in to participate in this discussion.'
+    end
+  end
+
+  context 'if they are logged in' do
+    it 'adds this discussion to their list of discussions' do
+      create_user_and_sign_in
+      visit discussion_path @discussion
+      visit discussions_path
+      page.should have_content @discussion.question
+    end
+  end
+end
