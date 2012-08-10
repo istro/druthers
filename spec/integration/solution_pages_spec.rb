@@ -16,10 +16,8 @@ describe 'proposing a solution' do
   context "when a user submits a solution" do
     it "redirects the user to the discussion page with the new solution" do
       visit discussion_path(@discussion)
-      fill_in "Text", :with => "I propose ice cream"
-      save_and_open_page
+      fill_in "solution_text", :with => "I propose ice cream"
       click_button "Propose new solution"
-      save_and_open_page
       page.should have_content "I propose ice cream"
     end
   end

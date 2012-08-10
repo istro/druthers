@@ -22,9 +22,9 @@ describe 'When a user first logs in,' do
 			page.should have_content 'How do you feel about Montana?'
 		end
 
-    # it 'gives them a unique url they can share with others' do 
-    #   page.should have_content 'Share this link with others to invite them to the discussion:'
-    # end
+    it 'gives them a unique url they can share with others' do 
+      page.should have_content 'Share this link with others to invite them to the discussion:'
+    end
 	end
 end
 
