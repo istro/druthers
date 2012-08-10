@@ -35,5 +35,4 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'ffaker'
-  gem 'database_cleaner'
 end

@@ -8,6 +8,7 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch(%r{^config/initializers/.+\.rb$})
   watch('Gemfile')
   watch('Gemfile.lock')
+  watch('spec/support/')
   watch('spec/spec_helper.rb') { :rspec }
 end
 
