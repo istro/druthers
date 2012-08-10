@@ -10,5 +10,6 @@ FactoryGirl.define do
 
   factory :discussion do
     question Faker::Lorem.sentence
+    user FactoryGirl.create :user
   end
 end
