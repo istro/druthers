@@ -22,6 +22,11 @@ describe 'When a new user first logs in,' do
 			page.should have_content 'How do you feel about Montana?'
 		end
 
+<<<<<<< HEAD
+    it 'gives them a unique url they can share with others' do 
+      page.should have_content 'Share this link with others to invite them to the discussion:'
+    end
+=======
     it "displays a list of user's discussions upon login" do
       email = @user.email
       click_link 'Logout'
@@ -40,11 +45,7 @@ describe 'When a new user first logs in,' do
     # it 'gives them a unique url they can share with others' do 
     #   page.should have_content 'Share this link with others to invite them to the discussion:'
     # end
-
-    it 'gives them a unique url they can share with others' do 
-      page.should have_content 'Share this link with others to invite them to the discussion:'
-    end
-
+>>>>>>> add discussion integration spec
 	end
 end
 

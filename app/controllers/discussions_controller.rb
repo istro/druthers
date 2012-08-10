@@ -1,12 +1,13 @@
 class DiscussionsController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
   	@discussion = Discussion.new
   end
 
   def index
   	@discussion = Discussion.new
-  	@discussions = current_user.discussions
-    @user_discussions = current_user.user_discussions
+    @discussions = current_user.discussions
   end
 
   def create

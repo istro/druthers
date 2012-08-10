@@ -1,4 +1,6 @@
 class DiscussionsController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
   	@discussion = Discussion.new
   end
@@ -9,8 +11,8 @@ class DiscussionsController < ApplicationController
   	@discussions = current_user.discussions
     @user_discussions = current_user.user_discussions
 =======
-  	@discussions = current_user.discussions.all
->>>>>>> list users discussions
+    @discussions = current_user.discussions
+>>>>>>> add discussion integration spec
   end
 
   def create
