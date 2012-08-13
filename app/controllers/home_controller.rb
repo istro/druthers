@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    redirect_to discussions_path unless !current_user
+    redirect_to discussions_path if signed_in?
   end
 end
