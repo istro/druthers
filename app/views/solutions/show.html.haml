@@ -1,3 +1,7 @@
-SHOW!
+%h2= @solution.discussion.question
+%h1= @solution.text
 
 =render 'comment_form'
+
+%ul
+  =render @solution.comments
