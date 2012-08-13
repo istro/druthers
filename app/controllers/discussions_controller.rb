@@ -8,6 +8,7 @@ class DiscussionsController < ApplicationController
   def index
   	@discussion = Discussion.new
     @discussions = current_user.discussions
+    @user_discussions = current_user.user_discussions
   end
 
   def create
