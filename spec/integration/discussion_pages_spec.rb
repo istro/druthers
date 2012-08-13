@@ -56,7 +56,7 @@ describe 'When a user first visits the discussion page,' do
   context 'if they are not logged in' do
     it 'tells them they need to sign up or log in to participate' do
       visit discussion_path @discussion
-      page.should have_content 'Sign up or log in to participate in this discussion.'
+      page.should have_content 'You need to sign in or sign up before continuing.'
     end
   end
 

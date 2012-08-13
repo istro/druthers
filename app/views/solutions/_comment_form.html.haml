@@ -1,0 +1,4 @@
+= form_for [@solution, @comment] do |f|
+  = f.label :body, "New comment:"
+  = f.text_field :body, placeholder: 'Share your feelings...'
+  = f.submit 'Submit', class: "btn btn-info"

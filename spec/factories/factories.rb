@@ -12,4 +12,10 @@ FactoryGirl.define do
     question Faker::Lorem.sentence
     user FactoryGirl.create :user
   end
+   
+  factory :solution do
+    text "I propose #{Faker::Company.bs}."
+    user FactoryGirl.create :user
+    discussion FactoryGirl.create :discussion
+  end
 end

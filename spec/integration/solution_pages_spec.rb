@@ -22,3 +22,27 @@ describe 'proposing a solution' do
     end
   end
 end
+
+describe "commenting on a solution" do
+  before :each do
+    create_user_and_sign_in
+    @discussion = FactoryGirl.create(:discussion, user: @user)
+    @solutions  = 8.times.map {FactoryGirl.create(:solution, discussion: @discussion)}
+    @solution = @solutions.first
+  end
+
+  context "when a user views all solutions" do
+    it "provides a comment link" do
+      visit discussion_path(@discussion)
+      page.should have_link 'comments'
+    end
+  end
+
+  context "when a user views a single solution" do
+    it "provides a comment form" do
+      visit discussion_path(@discussion)
+      click_link 'comments'
+      page.should have_button "Submit"
+    end
+  end
+end

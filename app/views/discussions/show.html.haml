@@ -9,4 +9,5 @@
 %ul
   - @discussion.solutions.each_with_index do |solution, index|
     %li.solution{id: solution.id}= solution.text
+    =link_to "comments", discussion_solution_path(@discussion, solution)
 

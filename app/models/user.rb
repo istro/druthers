@@ -14,4 +14,5 @@ class User < ActiveRecord::Base
   has_many :discussions
   has_many :user_discussions
   has_many :solutions
+  has_many :comments
 end
