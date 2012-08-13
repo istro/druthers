@@ -1,8 +1,8 @@
 %h1 My discussions
 
+= render "form", :discussion => @discussion
+
 - if current_user.user_discussions.any?
   %ul
     - @user_discussions.each do |user_discussion|
       %li.discussion= link_to user_discussion.discussion.question, user_discussion.discussion
-
-= render "form", :discussion => @discussion
