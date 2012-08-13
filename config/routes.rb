@@ -9,6 +9,6 @@ Druthers::Application.routes.draw do
   end
   
   resources :solutions, only: [] do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :new]
   end
 end

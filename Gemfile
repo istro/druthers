@@ -22,6 +22,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'nyan-cat-formatter'
   gem 'rspec-rails'
   gem 'spork'
   gem 'guard-spork'

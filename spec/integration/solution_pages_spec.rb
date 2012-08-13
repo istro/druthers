@@ -52,5 +52,13 @@ describe "commenting on a solution" do
       click_button "Submit"
       page.should have_content "Great solution!"
     end
+
+    it "every comment provides a 'reply' link" do
+      fill_in "New Comment", with: "Great solution!"
+      click_button "Submit"
+      save_and_open_page
+
+      page.all(:css, 'comment').should have_link "reply"
+    end
   end
 end

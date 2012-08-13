@@ -1,1 +1,4 @@
-%li= comment.body
+.comment
+  %li
+    = comment.body
+    = link_to "reply", new_solution_comment_path(@solution)
