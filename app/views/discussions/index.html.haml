@@ -1,10 +1,16 @@
 %h1 My discussions
 
-%h3 Discussions I started
+- if current_user.discussions.any?
+  %h3 Discussions I started
+  %ul
+    - @discussions.each do |discussion|
+      %li= link_to discussion.question, discussion
 = render "form", :discussion => @discussion
 
-%h3 Discussions I am participating in
-%ul
-  - @user_discussions.each do |user_discussion|
-    %li= user_discussion.discussion.question
-    
+
+
+- if current_user.user_discussions.any?
+  %h3 Discussions I am participating in
+  %ul
+    - @user_discussions.each do |user_discussion|
+      %li= link_to user_discussion.discussion.question, user_discussion.discussion
