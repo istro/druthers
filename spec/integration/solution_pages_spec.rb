@@ -23,12 +23,11 @@ describe 'proposing a solution' do
   end
 end
 
-describe "commenting on a solution" do
+describe "commenting on a solution: " do
   before :each do
     create_user_and_sign_in
     @discussion = FactoryGirl.create(:discussion, user: @user)
     @solutions  = 8.times.map {FactoryGirl.create(:solution, discussion: @discussion)}
-    @solution = @solutions.first
   end
 
   context "when a user views all solutions" do
@@ -42,23 +41,18 @@ describe "commenting on a solution" do
     before :each do
       visit discussion_path(@discussion)
       click_link 'comments'
+
+      @body = "It works in #{Faker::AddressUS.state}!"
+      fill_in "New Comment", with: @body
+      click_button "Submit"
     end
+
     it "provides a comment form" do
       page.should have_button "Submit"
     end
 
     it "her comment submission appears on the page" do
-      fill_in "New Comment", with: "Great solution!"
-      click_button "Submit"
-      page.should have_content "Great solution!"
-    end
-
-    it "every comment provides a 'reply' link" do
-      fill_in "New Comment", with: "Great solution!"
-      click_button "Submit"
-      save_and_open_page
-
-      page.all(:css, 'comment').should have_link "reply"
+      page.should have_content @body
     end
   end
 end
