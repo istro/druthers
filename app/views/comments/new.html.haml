@@ -1,0 +1,2 @@
+%h2= @parent_comment.body
+= render 'shared/comment_form', locals: { commentable: @parent_comment, comment: @comment}

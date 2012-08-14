@@ -6,4 +6,9 @@ class SolutionsController < ApplicationController
     redirect_to @solution.discussion
   end
 
+  def show
+    @solution = Solution.find(params[:id])
+    @comment  = Comment.new
+  end
+
 end

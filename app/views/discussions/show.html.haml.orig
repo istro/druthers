@@ -11,7 +11,7 @@
     %li.ui-state-default{id: solution.id}
       %span.ui-icon.ui-icon-arrowthick-2-n-s
       = solution.text
-      =link_to "comments", discussion_solution_path(@discussion, solution)
+      = link_to "comments", discussion_solution_path(@discussion, solution)
 = form_tag discussions_path do
   = hidden_field :vote, ''
   = submit_tag "Save my preference order", class: "btn btn-success"
