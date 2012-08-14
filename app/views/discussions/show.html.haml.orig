@@ -11,9 +11,7 @@
     %li.ui-state-default{id: solution.id}
       %span.ui-icon.ui-icon-arrowthick-2-n-s
       = solution.text
-      =link_to "comments", discussion_solution_path(@discussion, solution)
-= form_tag ballots_path do
-  %input{type: 'hidden', id: 'vote', name: 'vote'}
-  %input{type: 'hidden', name: 'user_id', value: @current_user.id}
-  %input{type: 'hidden', name: 'discussion_id', value: @discussion.id}
-  = submit_tag "Save my preference order", class: "btn btn-success save_vote"
+      = link_to "comments", discussion_solution_path(@discussion, solution)
+= form_tag discussions_path do
+  = hidden_field :vote, ''
+  = submit_tag "Save my preference order", class: "btn btn-success"
