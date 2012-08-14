@@ -6,7 +6,11 @@
 
 = render 'solutions/form'
 
-%ul
+%ul#sortable
   - @discussion.solutions.each_with_index do |solution, index|
-    %li.solution{id: solution.id}= solution.text
-
+    %li.ui-state-default{id: solution.id}
+      %span.ui-icon.ui-icon-arrowthick-2-n-s
+      = solution.text
+= form_tag discussions_path do
+  = hidden_field :vote, ''
+  = submit_tag "Save my preference order", class: "btn btn-success"
