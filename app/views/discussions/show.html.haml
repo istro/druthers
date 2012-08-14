@@ -12,7 +12,7 @@
       %span
       = solution.text
       =link_to "comments", discussion_solution_path(@discussion, solution), class: "comment"
-= form_tag ballots_path do
+= form_tag do
   %input{type: 'hidden', id: 'vote', name: 'vote'}
   %input{type: 'hidden', name: 'user_id', value: @current_user.id}
   %input{type: 'hidden', name: 'discussion_id', value: @discussion.id}
