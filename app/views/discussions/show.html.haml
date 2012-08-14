@@ -9,9 +9,9 @@
 %ul#sortable
   - @discussion.solutions.each_with_index do |solution, index|
     %li.ui-state-default{id: solution.id}
-      %span.ui-icon.ui-icon-arrowthick-2-n-s
+      %span
       = solution.text
-      =link_to "comments", discussion_solution_path(@discussion, solution)
+      =link_to "comments", discussion_solution_path(@discussion, solution), class: "comment"
 = form_tag ballots_path do
   %input{type: 'hidden', id: 'vote', name: 'vote'}
   %input{type: 'hidden', name: 'user_id', value: @current_user.id}

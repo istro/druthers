@@ -8,6 +8,7 @@ $(function() {
     create: setVote,
     stop: setVote
   });
+  $( "#sortable" ).disableSelection();
 
   $('.save_vote').click(function(event){
     $.ajax({
