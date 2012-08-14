@@ -23,36 +23,36 @@ describe 'proposing a solution' do
   end
 end
 
-describe "commenting on a solution: " do
-  before :each do
-    create_user_and_sign_in
-    @discussion = FactoryGirl.create(:discussion, user: @user)
-    @solutions  = 8.times.map {FactoryGirl.create(:solution, discussion: @discussion)}
-  end
+# describe "commenting on a solution: " do
+#   before :each do
+#     create_user_and_sign_in
+#     @discussion = FactoryGirl.create(:discussion, user: @user)
+#     @solutions  = 8.times.map {FactoryGirl.create(:solution, discussion: @discussion)}
+#   end
 
-  context "when a user views all solutions" do
-    it "provides a comment link" do
-      visit discussion_path(@discussion)
-      page.should have_link 'comments'
-    end
-  end
+#   context "when a user views all solutions" do
+#     it "provides a comment link" do
+#       visit discussion_path(@discussion)
+#       page.should have_link 'comments'
+#     end
+#   end
 
-  context "when a user views a single solution" do
-    before :each do
-      visit discussion_path(@discussion)
-      click_link 'comments'
+#   context "when a user views a single solution" do
+#     before :each do
+#       visit discussion_path(@discussion)
+#       click_link 'comments'
 
-      @body = "It works in #{Faker::AddressUS.state}!"
-      fill_in "New Comment", with: @body
-      click_button "Submit"
-    end
+#       @body = "It works in #{Faker::AddressUS.state}!"
+#       fill_in "New Comment", with: @body
+#       click_button "Submit"
+#     end
 
-    it "provides a comment form" do
-      page.should have_button "Submit"
-    end
+#     it "provides a comment form" do
+#       page.should have_button "Submit"
+#     end
 
-    it "her comment submission appears on the page" do
-      page.should have_content @body
-    end
-  end
-end
+#     it "her comment submission appears on the page" do
+#       page.should have_content @body
+#     end
+#   end
+# end

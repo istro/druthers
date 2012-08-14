@@ -8,14 +8,14 @@ describe 'When a new user first logs in,' do
 
 	context 'the first page they see' do
 	  it 'has a new discussion field' do
-      page.should have_button 'Create new discussion'
+      page.should have_button 'Get ideas!'
 	  end
 	end
 
 	context 'Discussions' do
     before :each do
       fill_in 'discussion_question', with: "How do you feel about Montana?"
-      click_button 'Create new discussion'
+      click_button 'Get ideas!'
     end
 
 		it 'shows the discussion after it was created' do
