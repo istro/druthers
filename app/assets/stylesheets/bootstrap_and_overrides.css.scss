@@ -5,25 +5,32 @@ body {
   padding-top: 60px;
 }
 
+.main {
+  width: 90px;
+}
+
 ul {
   list-style-type: none;
   margin-left: 0px;
 }
-
+i {
+  margin: 4px 5px 0 0;
+}
 h1 {
   margin: 15px 0 15px 0;
 }
 
 .ui-state-default {
   height: 30px;
-  padding: 15px 0 0 20px;
-  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: 1.5em;
+  padding: 10px 0 0 20px;
+  font-size: 1.5em;
   margin-bottom: 10px;
-  border-radius: 15px;
+  background: #ddd;
 }
 
-.comment {
+comment {
   color: #04345E !important;
+  text-align: right !important;
 }
 
 .save_vote {
