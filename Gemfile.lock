@@ -255,6 +255,7 @@ GEM
     uglifier (1.2.7)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
+    vote-schulze (0.2.0)
     warden (1.2.1)
       rack (>= 1.0)
     xpath (0.1.4)
@@ -290,3 +291,4 @@ DEPENDENCIES
   thin
   tlsmail
   uglifier (>= 1.0.3)
+  vote-schulze (~> 0.2.0)

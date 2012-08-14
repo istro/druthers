@@ -10,6 +10,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'tlsmail'
 gem 'heroku'
+gem "vote-schulze", "~> 0.2.0"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
