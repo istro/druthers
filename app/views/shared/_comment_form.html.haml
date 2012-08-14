@@ -2,5 +2,5 @@
   = f.hidden_field :commentable_id, value: commentable.id
   = f.hidden_field :commentable_type, value: commentable.class
   = f.label :body, "New Comment"
-  = f.text_field :body, placeholder: 'Share your feelings...'
+  = f.text_field :body, class: 'text_field', placeholder: 'Share your feelings...'
   = f.submit 'Submit', class: "btn btn-info"
