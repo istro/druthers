@@ -1,17 +1,28 @@
 $(function() {
 
-// saving the default order upon rendering options
+  var setVote = function(event, ui) {
+    $("#vote").val($('#sortable').sortable('toArray'));
+  };
+
   $( "#sortable" ).sortable({
-    create: function(event, ui) {
-      $("#vote_").val($('#sortable').sortable('toArray'));
-    }
+    create: setVote,
+    stop: setVote
   });
 
-// saving order upon rearranging options
-  $( "#sortable" ).sortable({
-    stop: function(event, ui) {
-      $("#vote_").val($('#sortable').sortable('toArray'));
-    }
+  $('.save_vote').click(function(event){
+    $.ajax({
+      url: '/ballots/new',
+      data: {
+        vote: $('#sortable').sortable('toArray'),
+        user_id: $('[name=user_id]').val(),
+        discussion_id: $('[name=discussion_id]').val()
+      },
+      success: function(response){
+        console.log('submitted!' + response);
+        alert('Vote saved! You can update it anytime by resubmitting your preference order.');
+      }
+    });
+    event.preventDefault();
   });
 
 });
