@@ -15,4 +15,5 @@ class User < ActiveRecord::Base
   has_many :user_discussions
   has_many :solutions
   has_many :comments
+  has_many :rankings
 end

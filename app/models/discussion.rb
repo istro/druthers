@@ -4,4 +4,5 @@ class Discussion < ActiveRecord::Base
   has_many :solutions
   has_many :user_discussions
   validates :question, presence: true
+  has_many :rankings, through: :solutions
 end

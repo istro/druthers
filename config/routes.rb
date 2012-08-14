@@ -14,5 +14,5 @@ Druthers::Application.routes.draw do
     resources :comments, only: [:create, :new]
   end
 
-  resources :ballots, only: [:new]
+  resources :rankings, only: [:new]
 end
