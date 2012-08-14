@@ -1,5 +1,6 @@
-%h2= @solution.discussion.question
-%h1= @solution.text
-= render partial: 'shared/comment_form', locals: { commentable: @solution, comment: @comment }
-%ul
-  = render @solution.comments
+.hero-unit
+  %h2= @solution.discussion.question
+  %h1= @solution.text
+  = render partial: 'shared/comment_form', locals: { commentable: @solution, comment: @comment }
+  %ul
+    = render @solution.comments
