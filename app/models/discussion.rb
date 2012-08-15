@@ -15,4 +15,19 @@ class Discussion < ActiveRecord::Base
     sorted_solutions
   end
 
+  def participants
+    self.rankings.map(&:user).uniq
+  end
+
+  def ballots
+    self.participants.map do |user|
+      self.rankings.where(user_id: user.id).map(&:value)
+    end
+  end
+
+  def results
+    vs = SchulzeBasic.do self.ballots, self.solutions.length
+    vs.ranks_abc
+  end
+
 end
