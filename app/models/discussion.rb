@@ -3,6 +3,8 @@ class Discussion < ActiveRecord::Base
   belongs_to :user
   has_many :solutions
   has_many :user_discussions
-  validates :question, presence: true
   has_many :rankings, through: :solutions
+
+  validates :question, presence: true
+
 end
