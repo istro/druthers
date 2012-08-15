@@ -7,6 +7,17 @@ class Discussion < ActiveRecord::Base
 
   validates :question, presence: true
 
+  def results
+    
+    aggregate_ranked_solutions = []
+
+    self.ranks.each_with_index do |rank, index|
+      aggregate_ranked_solutions[rank] = self.solutions[index]
+    end
+
+    aggregate_ranked_solutions.reverse
+  end
+
   def ranked_solutions(user)
     rankings = self.rankings.find_all_by_user_id user.id
     sorted_solutions = rankings.sort_by(&:value).reverse.map { |ranking| ranking.solution }
@@ -25,9 +36,9 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def results
+  def ranks
     vs = SchulzeBasic.do self.ballots, self.solutions.length
-    vs.ranks_abc
+    vs.ranks
   end
 
 end
