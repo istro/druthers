@@ -8,10 +8,9 @@ class Discussion < ActiveRecord::Base
   validates :question, presence: true
 
   def results
-    
     aggregate_ranked_solutions = []
 
-    self.ranks.each_with_index do |rank, index|
+    self.schulze_ranks.each_with_index do |rank, index|
       aggregate_ranked_solutions[rank] = self.solutions[index]
     end
 
@@ -36,7 +35,7 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def ranks
+  def schulze_ranks
     vs = SchulzeBasic.do self.ballots, self.solutions.length
     vs.ranks
   end

@@ -11,4 +11,10 @@ class SolutionsController < ApplicationController
     @comment  = Comment.new
   end
 
+  def destroy
+    @solution = Solution.find(params[:id])
+    @solution.destroy
+
+    redirect_to @solution.discussion
+  end
 end
