@@ -7,4 +7,12 @@ class Discussion < ActiveRecord::Base
 
   validates :question, presence: true
 
+  def ranked_solutions(user)
+    rankings = self.rankings.find_all_by_user_id user.id
+    sorted_solutions = rankings.sort_by(&:value).reverse.map { |ranking| ranking.solution }
+    unranked = (self.solutions - sorted_solutions).reverse
+    unranked.each {|solution| sorted_solutions.unshift solution }
+    sorted_solutions
+  end
+
 end

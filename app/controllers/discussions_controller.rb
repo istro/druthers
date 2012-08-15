@@ -19,6 +19,7 @@ class DiscussionsController < ApplicationController
   def show
     @discussion = Discussion.find(params[:id])
     @solution = Solution.new
+    
     if signed_in?
       unless current_user.user_discussions.find_by_discussion_id params[:id] || @discussion.user = current_user
         @user_discussion = @discussion.user_discussions.new

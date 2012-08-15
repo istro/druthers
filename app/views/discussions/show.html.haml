@@ -7,7 +7,7 @@
 = render 'solutions/form'
 
 %ul#sortable
-  - @discussion.solutions.each_with_index do |solution, index|
+  - @discussion.ranked_solutions(current_user).each_with_index do |solution, index|
     %li.ui-state-default{id: solution.id}
       %i.icon-th
       = solution.text
