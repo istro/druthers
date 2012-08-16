@@ -1,6 +1,6 @@
 %h1= @discussion.question
 
-= render 'solutions/form'
+= render 'solutions/form' unless @discussion.voted_on?
 = render 'tabs'
 
 %p.discussions-intro
