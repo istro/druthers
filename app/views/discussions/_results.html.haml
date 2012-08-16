@@ -1,0 +1,6 @@
+%ul#display
+  - @schulze_solutions.each_with_index do |solution, index|
+    %li.ui-state-default{id: solution.id}
+      ="#{index+1}."
+      = solution.text
+

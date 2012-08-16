@@ -1,21 +1,7 @@
 %h1= @discussion.question
 
--if @discussion.solutions.any?
-  = render 'solutions/form'
-  %p.discussions-intro Drag the solutions to arrange them in the order of your preference. Then click Vote.
-  %ul#sortable
-    - @discussion.solutions.each_with_index do |solution, index|
-      %li.ui-state-default{id: solution.id}
-        %i.icon-th
-        = solution.text
-  = form_tag do
-    %input{type: 'hidden', id: 'vote', name: 'vote'}
-    %input{type: 'hidden', name: 'user_id', value: @current_user.id}
-    %input{type: 'hidden', name: 'discussion_id', value: @discussion.id}
-    = submit_tag "Vote", class: "btn btn-success save_vote btn-large"
--else
-  %p.discussions-intro There aren't any solutions yet. Propose one below:
-  = render 'solutions/form'
+= render 'solutions/form'
+= render 'tabs'
 
 %p.discussions-intro
   Share this link with others to invite them to the discussion:

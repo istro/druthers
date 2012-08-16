@@ -17,17 +17,23 @@ class DiscussionsController < ApplicationController
   end
 
   def show
-    @discussion = Discussion.find(params[:id])
     @solution = Solution.new
-    
+
+    @discussion         = Discussion.find(params[:id])
+    @sortable_solutions = @discussion.ranked_solutions current_user
+
+    @schulze_solutions  = @discussion.results if @discussion.voted_on?
+
+
     if signed_in?
       unless current_user.user_discussions.find_by_discussion_id params[:id] || @discussion.user = current_user
-        @user_discussion = @discussion.user_discussions.new
+        @user_discussion      = @discussion.user_discussions.new
         @user_discussion.user = current_user
         @user_discussion.save
       end
     else
       flash[:message] = 'Sign up or log in to participate in this discussion.'
     end
+
   end
 end
