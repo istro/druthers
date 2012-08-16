@@ -9,10 +9,6 @@ $(function() {
   });
   $( "#sortable" ).disableSelection();
 
-  var tabs = function(){
-     $( "#tabs" ).tabs({});
-  };
-
   $('.save_vote').click(function(event){
     $.ajax({
       url: '/rankings/new',
@@ -22,13 +18,14 @@ $(function() {
         discussion_id: $('[name=discussion_id]').val()
       },
       success: function(response){
-        $("#tabs-2").replaceWith(response);
-        tabs();
+        $("#tabs-2").html(response)
         alert('Vote saved! You can update it anytime by resubmitting your preference order.');
       }
     });
     event.preventDefault();
   });
 
-  tabs();
+  $( "#tabs" ).tabs({
+
+  });
 });
