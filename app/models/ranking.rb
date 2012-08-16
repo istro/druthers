@@ -4,6 +4,7 @@ class Ranking < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :solution
+  has_one :discussion, through: :solution
 
   validates :value, presence: true
 
@@ -17,7 +18,5 @@ class Ranking < ActiveRecord::Base
     end
     # to refactor later: make a hash with solution_id's and rankings instead of passing around the fragile array indices
   end
-
-
 
 end

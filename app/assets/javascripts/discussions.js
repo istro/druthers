@@ -1,5 +1,4 @@
 $(function() {
-
   var setVote = function(event, ui) {
     $("#vote").val($('#sortable').sortable('toArray'));
   };
@@ -19,12 +18,14 @@ $(function() {
         discussion_id: $('[name=discussion_id]').val()
       },
       success: function(response){
-        console.log('submitted!' + response);
+        $("#tabs-2").html(response)
         alert('Vote saved! You can update it anytime by resubmitting your preference order.');
       }
     });
     event.preventDefault();
   });
 
-});
+  $( "#tabs" ).tabs({
 
+  });
+});
