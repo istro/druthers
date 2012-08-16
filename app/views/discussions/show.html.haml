@@ -6,19 +6,5 @@
   = link_to discussion_url(@discussion), discussion_url(@discussion)
 
 = render 'solutions/form'
-
-%ul#sortable
-  - @discussion.ranked_solutions(current_user).each_with_index do |solution, index|
-    %li.ui-state-default{id: solution.id}
-      %i.icon-th
-      = solution.text
-      - if solution.user == current_user
-        =link_to 'delete', solution, method: :delete, data: { confirm: 'Are you sure?' }
-      / =link_to "comments", discussion_solution_path(@discussion, solution), class: "comment"
-      
-= form_tag do
-  %input{type: 'hidden', id: 'vote', name: 'vote'}
-  %input{type: 'hidden', name: 'user_id', value: @current_user.id}
-  %input{type: 'hidden', name: 'discussion_id', value: @discussion.id}
-  = submit_tag "Save my preference order", class: "btn btn-success save_vote"
+= render 'tabs'
 
