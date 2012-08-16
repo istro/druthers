@@ -1,0 +1,121 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.main {
+  width: 90px;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 0px;
+}
+i {
+  margin: 4px 5px 0 0;
+}
+
+h1 {
+  margin: 10px 0 10px 0;
+}
+h3 {
+  margin: 10px 0 10px 0;
+}
+.ui-state-default {
+  height: 30px;
+  padding: 10px 0 0 20px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  background: #ddd;
+}
+
+comment {
+  color: #04345E !important;
+  text-align: right !important;
+}
+
+.save_vote {
+  margin-top: 10px;
+}
+
+.text_field {
+  margin-top: 9px;
+}
+
+.front {
+  padding: 30px 30px;
+  .well {
+    width: 230px;
+    height: 170px;
+  }
+}
+.signin_form {
+  display: block;
+
+  #remember_me {
+    label, input {
+      display: inline;
+    
+      btn.btn-info {
+        align: right;
+      }
+    }
+  }
+}
+
+.discussion {
+  font-size: 1.5em;
+  line-height: 36px;
+
+}
+
+input#discussion_question {
+  font-size: 1.5em;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 0px;
+  padding: 10px;
+}
+
+input#solution_text {
+  font-size: 1.5em;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 0px;
+  padding: 10px;
+}
+
+.welcome_message {
+  overflow: hidden;
+  height: 150px;
+  padding: 300px 15px 15px 15px;
+  color: #FFFFFF;
+  background-image: url(<%= asset_path 'crowd.jpg' %>);
+  border-radius: 10px;
+  .welcome_message_text {
+    padding: 15px 40px;
+    background-color: #000;
+    opacity: 0.8;
+    border-radius: 10px;
+  }
+}
+
+p.discussions-intro {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  min-width: 360px;
+  width: 70%;
+}
+
+#error_explanation {
+  h2 {
+    font-size: 1em;
+  }
+  li {
+    padding-left: 15px;
+  }
+}
+

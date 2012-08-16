@@ -1,8 +1,12 @@
-%h1 Dashboard
-
+%h1 Discussions
 - if current_user.user_discussions.any?
   %ul
     - @user_discussions.each do |user_discussion|
-      %li.discussion= link_to user_discussion.discussion.question, user_discussion.discussion
+      %li.discussion
+        %i.icon-asterisk
+        = link_to user_discussion.discussion.question, user_discussion.discussion
+- else
+  %p.discussions-intro
+    Create a discussion by typing in a topic:
 
 = render "form", :discussion => @discussion

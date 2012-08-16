@@ -1,4 +1,31 @@
-.hero-unit
-  %h1 Druthers
-  %p Druthers helps groups make decisions. Discuss questions and vote on ideas.
-  = link_to "Try it.", new_user_registration_path, class: 'btn btn-primary btn-large'
+.front
+  .row-fluid
+    .span8
+      .welcome_message
+        .welcome_message_text
+          %h1 Welcome to Druthers
+          %h3
+            %div Druthers helps groups make decisions.
+            %div Discuss questions and vote on solutions.
+    .span4
+      .well
+        %h4 Returning User
+        .signin_form
+          =form_for("user", url: user_session_path) do |f|
+            = f.text_field :email, placeholder: "Email Address"
+            = f.password_field :password, placeholder: "Password"
+            #remember_me
+              = f.check_box :remember_me
+              = f.label :remember_me
+              = f.submit 'Sign in', class: "btn btn-info"
+            %br
+            = link_to "Forgot your password?", new_password_path('user')
+      .well
+        %h4 New to Druthers? Sign up
+        .signup_form
+          =form_for("user", url: user_registration_path) do |f|
+            = f.text_field :email, placeholder: "Email Address"
+            = f.password_field :password, placeholder: "Password"
+            = f.password_field :password_confirmation, placeholder: "Confirm Password"
+            %br
+            = f.submit 'Sign up', class: "btn btn-info"
