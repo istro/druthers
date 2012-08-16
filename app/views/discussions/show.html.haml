@@ -1,9 +1,5 @@
 %h1= @discussion.question
 
-%p.discussions-intro
-  Share this link with others to invite them to the discussion:
-  = link_to discussion_url(@discussion), discussion_url(@discussion)
-
 -if @discussion.solutions.any?
   = render 'solutions/form'
   %p.discussions-intro Drag the solutions to arrange them in the order of your preference. Then click Vote.
@@ -20,3 +16,7 @@
 -else
   %p.discussions-intro There aren't any solutions yet. Propose one below:
   = render 'solutions/form'
+
+%p.discussions-intro
+  Share this link with others to invite them to the discussion:
+  = link_to discussion_url(@discussion), discussion_url(@discussion)
