@@ -6,15 +6,17 @@ class Discussion < ActiveRecord::Base
   has_many :rankings, through: :solutions
 
   validates :question, presence: true
+  accepts_nested_attributes_for :solutions
 
   def voted_on?
     !self.rankings.empty?
   end
 
   def results
-    ranks.map do |rank|
+    arr = ranks.map do |rank|
       self.solutions[("A".."Z").to_a.index( rank[0] )]
     end
+    arr.reverse
   end
 
   def ranked_solutions(user)
@@ -38,6 +40,10 @@ class Discussion < ActiveRecord::Base
   def ranks
     vs = SchulzeBasic.do self.ballots, self.solutions.length
     vs.ranks_abc
+  end
+
+  def votable?
+    self.votable
   end
 
   def mark_votable

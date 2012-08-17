@@ -11,8 +11,8 @@ $(function() {
   $( "#sortable" ).disableSelection();
 
 
-// Regularly updating page to avoid incomplete ballots, update page when voting starts
-//------------------------------------------------------------------------------------
+// Regularly updating solutions, to avoid incomplete ballots
+//--------------------------------------------------------
 
   var currentSolutions = function(){
     var kids = $("#sortable").children();
@@ -23,12 +23,9 @@ $(function() {
     return ids
   };
 
-  var prependNewSolutions = function(response){
-    console.log('prepending')
-    $("#sortable").prepend(response)
-    if (!$.isEmptyObject(response)) {
-      $('.ballot_div').css('display', 'block')
-    }
+  var appendNewSolutions = function(response){
+    console.log('appending')
+    $("#sortable").append(response)
   };
 
   var solutionCheck = function(){
@@ -37,32 +34,20 @@ $(function() {
     $.ajax({
       type: 'PUT',
       url: window.location.pathname,
-      data: {
-        page: currentSolutions,
-        },
-      error: function(){
-        console.log("error")
-      },
-
-      success: function(response){
-        var new_additions = $(response).find('.new_addition')
-        new_additions.each( function(i, addition) {
-          prependNewSolutions(addition)
-        })
-        var votableyet = $(response).find('.votableyet').css('display')
-        if (votableyet == 'none') {
-          $('.save_vote').show();
-          $("#new_solution").css('display', 'none')
-        }
-      },
-
+      data: {page: currentSolutions},
       complete: function(){
         console.log("completed solutionCheck")
       },
+      error: function(){
+        console.log("error")
+      },
+      success: appendNewSolutions
     });
+
   }
 
-  window.setInterval(solutionCheck, 300)
+  window.setInterval(solutionCheck, 3000)
+
 
 // Saving rankings w/o refreshing.
 //----------------------------------------------------------------
@@ -83,8 +68,12 @@ $(function() {
     event.preventDefault();
   });
 
+<<<<<<< HEAD
+  $( "#tabs" ).tabs({});
+=======
   $('.open_voting').click(function(event){
-    $('.open_voting').css('display', 'none');
+    $('.open_voting').remove();
+    // make ajax call mapping to a method that will update discussion.votable to 1
     $.ajax({
       url: '/votable',
       data: {
@@ -92,9 +81,11 @@ $(function() {
       }
     });
     $('.save_vote').show();
-    $("#new_solution").css('display', 'none')
+    $("#new_solution").remove();
   });
 
   $( "#tabs" ).tabs({
+
   });
+>>>>>>> eb9a859
 });

@@ -25,6 +25,8 @@ class DiscussionsController < ApplicationController
 
     @schulze_solutions  = @discussion.results if @discussion.voted_on?
 
+    @mode = @sortable_solutions[0].nil? ? 'none' : 'block'
+    @votable = @discussion.votable? ? 'block' : 'none'
 
     if signed_in?
       unless current_user.user_discussions.find_by_discussion_id params[:id] || @discussion.user = current_user
@@ -44,9 +46,11 @@ class DiscussionsController < ApplicationController
   end
 
   def update
-    @discussion         = Discussion.find(params[:id])
-    all_solutions = @discussion.ranked_solutions current_user
+    @discussion   = Discussion.find(params[:id])
 
+    @new_solution_style = (@discussion.votable? ? "none" : "block")
+
+    all_solutions = @discussion.ranked_solutions current_user
     current_solution_ids = params[:page].split(",").map{|n| n.to_i}
     @appendables = all_solutions - current_solution_ids.map {|id| Solution.find id }
 

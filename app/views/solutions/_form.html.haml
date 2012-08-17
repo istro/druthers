@@ -1,4 +1,5 @@
-= form_for [@discussion, @solution] do |f|
+= form_for @solution, :html => {} do |f|
   = f.text_field :text, class: 'input-xxlarge', placeholder: 'Offer your solution here.'
+  %input{type: 'hidden', name: 'user_id', value: @current_user.id}
   %input{type: 'hidden', name: 'discussion_id', value: @discussion.id}
   = f.submit 'Propose new solution', class: "btn add_solution btn-info btn-large"

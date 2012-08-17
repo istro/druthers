@@ -9,7 +9,6 @@ class SolutionsController < ApplicationController
 
   def show
     @solution = Solution.find(params[:id])
-    @comment  = Comment.new
   end
 
   def destroy

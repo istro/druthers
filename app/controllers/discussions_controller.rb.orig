@@ -1,5 +1,6 @@
 class DiscussionsController < ApplicationController
   before_filter :authenticate_user!
+  layout 'application', :except => :update
 
   def new
   	@discussion = Discussion.new
@@ -7,12 +8,8 @@ class DiscussionsController < ApplicationController
 
   def index
   	@discussion = Discussion.new
-<<<<<<< HEAD
-  	@discussions = current_user.discussions
-    @user_discussions = current_user.user_discussions
-=======
     @discussions = current_user.discussions
->>>>>>> add discussion integration spec
+    @user_discussions = current_user.user_discussions
   end
 
   def create
@@ -21,16 +18,40 @@ class DiscussionsController < ApplicationController
   end
 
   def show
-    @discussion = Discussion.find(params[:id])
     @solution = Solution.new
+
+    @discussion         = Discussion.find(params[:id])
+    @sortable_solutions = @discussion.ranked_solutions current_user
+
+    @schulze_solutions  = @discussion.results if @discussion.voted_on?
+
+
     if signed_in?
       unless current_user.user_discussions.find_by_discussion_id params[:id] || @discussion.user = current_user
-        @user_discussion = @discussion.user_discussions.new
+        @user_discussion      = @discussion.user_discussions.new
         @user_discussion.user = current_user
         @user_discussion.save
       end
     else
       flash[:message] = 'Sign up or log in to participate in this discussion.'
     end
+  end
+<<<<<<< HEAD
+
+  def update
+    @discussion         = Discussion.find(params[:id])
+    all_solutions = @discussion.ranked_solutions current_user
+
+    current_solution_ids = params[:page].split(",").map{|n| n.to_i}
+    @appendables = all_solutions - current_solution_ids.map {|id| Solution.find id }
+
+    render layout: false
+=======
+
+  def votable
+    d = Discussion.find(params[:discussion_id])
+    d.mark_votable
+    render :nothing => true
+>>>>>>> eb9a859
   end
 end

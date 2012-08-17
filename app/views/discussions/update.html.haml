@@ -1,4 +1,6 @@
-- @appendables.each do |solution|
-  %li.ui-state-default{id: solution.id}
-    %i.icon-th
-    = solution.text
+%div
+  %span.votableyet{style: "display:#{@new_solution_style}"}
+  - @appendables.each do |solution|
+    %li.ui-state-default.new_addition{id: solution.id}
+      %i.icon-th
+      = solution.text
