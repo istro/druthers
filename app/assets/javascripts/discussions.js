@@ -7,7 +7,50 @@ $(function() {
     create: setVote,
     stop: setVote
   });
+
   $( "#sortable" ).disableSelection();
+
+
+// Regularly updating solutions, to avoid incomplete ballots
+//--------------------------------------------------------
+
+  var currentSolutions = function(){
+    var kids = $("#sortable").children();
+    ids = []
+    kids.each(function(i, child){
+      ids.push(child.id)
+    })
+    return ids
+  };
+
+  var appendNewSolutions = function(response){
+    console.log('appending')
+    $("#sortable").append(response)
+  };
+
+  var solutionCheck = function(){
+    console.log("checking for solutions...")
+
+    $.ajax({
+      type: 'PUT',
+      url: window.location.pathname,
+      data: {page: currentSolutions},
+      complete: function(){
+        console.log("completed solutionCheck")
+      },
+      error: function(){
+        console.log("error")
+      },
+      success: appendNewSolutions
+    });
+
+  }
+
+  window.setInterval(solutionCheck, 3000)
+
+
+// Saving rankings w/o refreshing.
+//----------------------------------------------------------------
 
   $('.save_vote').click(function(event){
     $.ajax({
