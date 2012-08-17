@@ -53,6 +53,7 @@ $(function() {
         if (votableyet == 'none') {
           $('.save_vote').show();
           $("#new_solution").css('display', 'none')
+          $('.open_voting').css('display', 'none');
         }
       },
 
@@ -84,15 +85,12 @@ $(function() {
   });
 
   $('.open_voting').click(function(event){
-    $('.open_voting').css('display', 'none');
     $.ajax({
       url: '/votable',
       data: {
         discussion_id: $('[name=discussion_id]').val()
       }
     });
-    $('.save_vote').show();
-    $("#new_solution").css('display', 'none')
   });
 
   $( "#tabs" ).tabs({

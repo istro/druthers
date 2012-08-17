@@ -1,4 +1,4 @@
-= form_for @solution, :html => {} do |f|
+= form_for @solution do |f|
   = f.text_field :text, class: 'input-xxlarge', placeholder: 'Offer your solution here.'
   %input{type: 'hidden', name: 'user_id', value: @current_user.id}
   %input{type: 'hidden', name: 'discussion_id', value: @discussion.id}
