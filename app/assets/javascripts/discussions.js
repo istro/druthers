@@ -22,12 +22,18 @@ $(function() {
     })
     return ids
   };
+  var updateResults = function(results) {
+    console.log('refreshing resluts')
+    console.log(results)
+    $("#display").html(results)
+  };
 
   var prependNewSolutions = function(response){
     console.log('prepending')
     $("#sortable").prepend(response)
     if (!$.isEmptyObject(response)) {
       $('.ballot_div').css('display', 'block')
+
     }
   };
 
@@ -49,6 +55,8 @@ $(function() {
         new_additions.each( function(i, addition) {
           prependNewSolutions(addition)
         })
+        results = $(response).find('#display')
+        updateResults(results)
         var votableyet = $(response).find('.votableyet').css('display')
         if (votableyet == 'none') {
           $('.save_vote').show();

@@ -3,11 +3,11 @@ class DiscussionsController < ApplicationController
   layout 'application', :except => :update
 
   def new
-  	@discussion = Discussion.new
+    @discussion = Discussion.new
   end
 
   def index
-  	@discussion = Discussion.new
+    @discussion = Discussion.new
     @discussions = current_user.discussions
     @user_discussions = current_user.user_discussions
   end
@@ -48,6 +48,7 @@ class DiscussionsController < ApplicationController
   def update
     @discussion   = Discussion.find(params[:id])
 
+    @results = @discussion.results
     @new_solution_style = (@discussion.votable? ? "none" : "block")
 
     all_solutions = @discussion.ranked_solutions current_user

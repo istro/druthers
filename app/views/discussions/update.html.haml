@@ -4,3 +4,8 @@
     %li.ui-state-default.new_addition{id: solution.id}
       %i.icon-th
       = solution.text
+  %ul#display
+    - @results.each_with_index do |solution, index|
+      %li.results{id: solution.id}
+        ="#{index+1}."
+        = solution.text
