@@ -1,5 +1,5 @@
 class Discussion < ActiveRecord::Base
-  attr_accessible :question
+  attr_accessible :question, :votable
   belongs_to :user
   has_many :solutions
   has_many :user_discussions
@@ -38,6 +38,10 @@ class Discussion < ActiveRecord::Base
   def ranks
     vs = SchulzeBasic.do self.ballots, self.solutions.length
     vs.ranks_abc
+  end
+
+  def mark_votable
+    self.update_attributes(votable: true)
   end
 
 end

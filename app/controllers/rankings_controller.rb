@@ -5,4 +5,5 @@ class RankingsController < ApplicationController
     @schulze_solutions = @discussion.results
     render '/discussions/_results', layout: false
   end
+
 end

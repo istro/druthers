@@ -2,6 +2,9 @@ Druthers::Application.routes.draw do
   devise_for :users
   root to: 'home#index'
 
+  match 'votable/' => 'discussions#votable'
+  match 'addsolution/' => 'solutions#create'
+
   resources :discussions do
     resources :solutions, only: [:create, :show]
   end

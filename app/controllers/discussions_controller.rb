@@ -34,6 +34,11 @@ class DiscussionsController < ApplicationController
     else
       flash[:message] = 'Sign up or log in to participate in this discussion.'
     end
+  end
 
+  def votable
+    d = Discussion.find(params[:discussion_id])
+    d.mark_votable
+    render :nothing => true
   end
 end

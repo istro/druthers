@@ -1,9 +1,10 @@
 class SolutionsController < ApplicationController
   def create
-    @solution = current_user.solutions.new(params[:solution])
+    current_user = User.find(params[:user_id])
+    @solution = current_user.solutions.new(:text => params[:solution])
     @solution.discussion_id = params[:discussion_id]
     @solution.save
-    redirect_to @solution.discussion
+    render :nothing => true
   end
 
   def show

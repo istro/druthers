@@ -1,5 +1,7 @@
+-if @discussion.user_id == @current_user.id && !@discussion.votable
+  %p.discussions-intro Participants may propose new solutions until the voting process begins.  As the discussion creator, you open the voting process by clicking on the "Start voting" button below.  No new solutions may be added once voting has began.
 -if @discussion.solutions.any?
-  %p.discussions-intro Drag the solutions to arrange them in the order of your preference. Then click Vote.
+  %p.discussions-intro Drag the solutions to arrange them in the order of your preference. Then click the "Vote" button.
 
   %div#tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
     %ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
@@ -12,11 +14,20 @@
           %li.ui-state-default{id: solution.id}
             %i.icon-th
             = solution.text
-      = form_tag do
-        %input{type: 'hidden', id: 'vote', name: 'vote'}
-        %input{type: 'hidden', name: 'user_id', value: @current_user.id}
-        %input{type: 'hidden', name: 'discussion_id', value: @discussion.id}
-        = submit_tag "Vote", class: "btn btn-success save_vote btn-large"
+      -if @discussion.votable
+        = form_tag do
+          %input{type: 'hidden', id: 'vote', name: 'vote'}
+          %input{type: 'hidden', name: 'user_id', value: @current_user.id}
+          %input{type: 'hidden', name: 'discussion_id', value: @discussion.id}
+          = submit_tag "Vote", class: "btn btn-success save_vote btn-large"
+      -else
+        = form_tag do
+          %input{type: 'hidden', id: 'vote', name: 'vote'}
+          %input{type: 'hidden', name: 'user_id', value: @current_user.id}
+          %input{type: 'hidden', name: 'discussion_id', value: @discussion.id}
+          = submit_tag "Vote", class: "btn btn-success save_vote btn-large", style: "display: none;"
+      -if @discussion.user_id == @current_user.id && !@discussion.votable
+        = button_tag "Start voting!", class: "btn btn-success open_voting btn-large"
 
     %div#tabs-2.ui-tabs-panel.ui-widget-content.ui-corner-bottom.ui-tabs-hide
       %ul#display
