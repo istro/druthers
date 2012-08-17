@@ -18,7 +18,8 @@ Druthers uses Bundler 1.2.0.rc in order to run Ruby 1.9.3 on Heroku. To install,
 
 ##To-do's
 
-* Add AJAX magic to improve refreshing
+* Comments on proposed solutions
+* Reimplement Schulze Condorcet Voting algorithm (currently we are using a gem)
 * Discussion Forum
 
 
