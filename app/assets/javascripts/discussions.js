@@ -26,7 +26,5 @@ $(function() {
     event.preventDefault();
   });
 
-  $( "#tabs" ).tabs({
-
-  });
+  $( "#tabs" ).tabs({});
 });
