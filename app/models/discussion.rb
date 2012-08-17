@@ -13,10 +13,20 @@ class Discussion < ActiveRecord::Base
   end
 
   def results
-    arr = ranks.map do |rank|
-      self.solutions[("A".."Z").to_a.index( rank[0] )]
+    results = {}
+    self.solutions.each do |sol|
+      values = sol.rankings.map{ |r| r.value }
+      sum = values.inject {|sum, value| sum + value }
+      results[sol] = sum
     end
-    arr.reverse
+    arr = results.sort_by {|key, value| value}
+    arr.map { |e| e[0] }.reverse
+
+
+    # arr = ranks.map do |rank|
+    #        self.solutions[("A".."Z").to_a.index( rank[0] )]
+    #      end
+    #      arr.reverse
   end
 
   def ranked_solutions(user)
