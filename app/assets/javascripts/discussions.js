@@ -62,12 +62,26 @@ $(function() {
       },
       success: function(response){
         $("#tabs-2").html(response)
-        $("#new_solution").remove();
         alert('Vote saved! You can update it anytime by resubmitting your preference order.');
       }
     });
     event.preventDefault();
   });
 
-  $( "#tabs" ).tabs({});
+  $('.open_voting').click(function(event){
+    $('.open_voting').remove();
+    // make ajax call mapping to a method that will update discussion.votable to 1
+    $.ajax({
+      url: '/votable',
+      data: {
+        discussion_id: $('[name=discussion_id]').val()
+      }
+    });
+    $('.save_vote').show();
+    $("#new_solution").remove();
+  });
+
+  $( "#tabs" ).tabs({
+
+  });
 });

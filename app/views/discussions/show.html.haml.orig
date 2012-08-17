@@ -2,7 +2,7 @@
 
 -if @discussion.solutions.any?
   = render 'solutions/form'
-  %p.discussions-intro Drag the solutions to arrange them in the order of your preference. Then click Vote.
+  %p.discussions-intro Drag the solutions to arrange them in the order of your preference. Then click the "Vote" button.
   %ul#sortable
     - @discussion.solutions.each_with_index do |solution, index|
       %li.ui-state-default{id: solution.id}

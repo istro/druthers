@@ -37,6 +37,12 @@ class DiscussionsController < ApplicationController
     end
   end
 
+  def votable
+    d = Discussion.find(params[:discussion_id])
+    d.mark_votable
+    render :nothing => true
+  end
+
   def update
     @discussion         = Discussion.find(params[:id])
     all_solutions = @discussion.ranked_solutions current_user

@@ -1,8 +1,8 @@
 %h1= @discussion.question
 
-= render 'solutions/form' unless @discussion.voted_on?
+= render 'solutions/form' unless @discussion.votable
 = render 'tabs'
 
 %p.discussions-intro
-  Share this link with others to invite them to the discussion:
+  Share this link with others to invite them to participate in the discussion:
   = link_to discussion_url(@discussion), discussion_url(@discussion)

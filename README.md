@@ -37,4 +37,4 @@ Then:
 
 ##License
 
-Druthers is free to everyone.  
+Druthers is free to everyone.
