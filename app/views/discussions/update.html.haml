@@ -6,6 +6,7 @@
       = solution.text
   %ul#display
     - @results.each_with_index do |solution, index|
+      %li
       %li.results{id: solution.id}
         ="#{index+1}."
         = solution.text
