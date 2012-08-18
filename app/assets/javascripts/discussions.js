@@ -86,7 +86,7 @@ $(function() {
       },
       success: function(response){
         $("#tabs-2").html(response)
-        alert('Vote saved! You can update it anytime by resubmitting your preference order.');
+        $('#results a').trigger('click')
       }
     });
     event.preventDefault();
